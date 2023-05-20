@@ -5,20 +5,14 @@
 
 trigger:
 - main
-
 pool:
   name: AzureDevOpsAgent 
-
 steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
     organization: 'nxtgendev'
     scannerMode: 'Other'
-- task: SonarCloudAnalyze@1
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -34,3 +28,6 @@ steps:
     checkStyleRunAnalysis: true
     pmdRunAnalysis: true
     findBugsRunAnalysis: true
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
