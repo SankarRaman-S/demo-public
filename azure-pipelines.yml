@@ -12,7 +12,9 @@ steps:
   inputs:
     SonarCloud: 'SonarCloud'
     organization: 'nxtgendev'
-    scannerMode: 'Other'
+    scannerMode: 'MSBuild'
+    projectKey: 'nxtgendev_demo-public'
+    projectName: 'demo-public'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -20,7 +22,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     codeCoverageToolOption: 'JaCoCo'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '11'
+    jdkVersionOption: '1.11'
     mavenVersionOption: 'Default'
     mavenOptions: '-Xmx3072m'
     mavenAuthenticateFeed: false
